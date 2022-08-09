@@ -6,7 +6,7 @@ from dao.model.movie import Movie
 from service.movie import MovieService
 
 
-@pytest.fixture()
+@pytest.fixture()  # Подготавливаем фикстуру DAO
 def movie_dao():
     movie_dao = MovieDAO(None)
 
@@ -23,7 +23,7 @@ def movie_dao():
     return movie_dao
 
 
-class TestMovieService:
+class TestMovieService:  # Пишем класс тестов
     @pytest.fixture(autouse=True)
     def movie_service(self, movie_dao):
         self.movie_service = MovieService(movie_dao)

@@ -7,7 +7,7 @@ from service.director import DirectorService
 
 
 @pytest.fixture()
-def director_dao():
+def director_dao():  # Подготавливаем фикстуру DAO
     director_init = DirectorDAO(None)
 
     director_1 = Director(id=1, name='user_1')
@@ -24,7 +24,7 @@ def director_dao():
     return director_init
 
 
-class TestDirectorService:
+class TestDirectorService:  # Пишем класс тестов
     @pytest.fixture(autouse=True)
     def director_service(self, director_dao):
         self.director_service = DirectorService(director_dao)
